@@ -1,0 +1,462 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #2b1e10;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+      padding: 1.5rem;
+      background-image: 
+        radial-gradient(circle at 20% 30%, #4d3420 0%, #1f140a 90%);
+    }
+
+    .cozy-card {
+      max-width: 500px;
+      width: 100%;
+      background: #e6d5b8;
+      background-image: linear-gradient(145deg, #f1e3cd 0%, #dac9ae 100%);
+      border-radius: 48px 48px 40px 40px;
+      padding: 2.2rem 2rem 2.8rem;
+      box-shadow: 
+        0 20px 40px rgba(0,0,0,0.6),
+        0 0 0 2px #735e47 inset,
+        0 0 0 4px #b39578 inset;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .cozy-card::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      border-radius: 40px;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 3px,
+        rgba(120, 80, 50, 0.03) 3px,
+        rgba(120, 80, 50, 0.03) 6px
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .cozy-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ----- avatar / profile picture (PFP) ----- */
+    .avatar-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .pfp-frame {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #aa8b70;
+      background: radial-gradient(circle at 35% 30%, #d4b697, #7d5f44 80%);
+      box-shadow: 
+        0 8px 0 #3d2c1b,
+        0 12px 18px rgba(0,0,0,0.3),
+        inset 0 -6px 0 #4d351f,
+        inset 0 6px 10px #efdcc4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid #4f3822;
+      transition: 0.2s;
+      overflow: hidden;
+    }
+
+    .pfp-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .pfp-frame .fallback-icon {
+      font-size: 3.8rem;
+      color: #2f1f0e;
+      text-shadow: 0 2px 6px #b69573, 0 -1px 0 #e9d6bb;
+      filter: drop-shadow(0 4px 4px rgba(0,0,0,0.2));
+      display: none;
+    }
+
+    .pfp-frame img:not([src]), 
+    .pfp-frame img[src=""],
+    .pfp-frame img[src="#"] {
+      display: none;
+    }
+    .pfp-frame img:not([src]) + .fallback-icon,
+    .pfp-frame img[src=""] + .fallback-icon,
+    .pfp-frame img[src="#"] + .fallback-icon {
+      display: block;
+    }
+
+    /* ---- name & bio ---- */
+    .cozy-name {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: #2c1b0c;
+      text-align: center;
+      margin-top: 0.4rem;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      text-shadow: 0 1px 4px #e2cfb4, 0 -1px 2px #a58364;
+      word-break: break-word;
+    }
+
+    .cozy-desc {
+      text-align: center;
+      font-size: 1rem;
+      color: #4d3421;
+      background: rgba(200, 170, 140, 0.25);
+      backdrop-filter: blur(2px);
+      padding: 0.3rem 1.2rem;
+      display: block;
+      border-radius: 60px;
+      margin: 0.2rem auto 1.8rem;
+      border: 1px solid #bba282;
+      box-shadow: inset 0 1px 6px #f3e2cd;
+      font-weight: 450;
+      letter-spacing: 0.3px;
+      backdrop-filter: blur(1px);
+      width: fit-content;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: 'Segoe UI', 'Roboto', sans-serif;
+    }
+
+    /* ---- link buttons ---- */
+    .links-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 2rem 0 2.2rem;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+    .wood-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      padding: 1rem 1.5rem;
+      background: #d8c3a6;
+      background: linear-gradient(135deg, #ebddc8, #cfb99a);
+      border-radius: 120px;
+      text-decoration: none;
+      color: #261809;
+      font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: 0.3px;
+      border: 2px solid #8a6f53;
+      box-shadow: 
+        0 8px 0 #5f4732,
+        0 6px 14px rgba(0,0,0,0.25),
+        inset 0 2px 10px #fcf3e6;
+      transition: all 0.12s ease-in;
+      font-family: 'Segoe UI', 'Roboto', sans-serif;
+      position: relative;
+      backdrop-filter: blur(1px);
+      cursor: pointer;
+    }
+
+    .wood-link::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 8px;
+      right: 8px;
+      height: 20%;
+      background: linear-gradient(180deg, rgba(255, 235, 210, 0.4), transparent);
+      border-radius: 80px;
+      pointer-events: none;
+    }
+
+    .wood-link i {
+      font-size: 1.7rem;
+      width: 2rem;
+      text-align: center;
+      color: #2e1b0b;
+      filter: drop-shadow(0 2px 2px #b18e6f);
+      transition: 0.15s;
+    }
+
+    .wood-link span {
+      flex: 1;
+      text-align: center;
+      padding-right: 0.5rem;
+      font-weight: 550;
+      text-shadow: 0 1px 0 #f3e3cf;
+    }
+
+    .wood-link:hover {
+      transform: translateY(4px);
+      box-shadow: 
+        0 4px 0 #5f4732,
+        0 10px 18px rgba(0,0,0,0.3);
+      background: #e3d2b8;
+      background: linear-gradient(145deg, #f2e5d2, #d1bb9c);
+      border-color: #7d6247;
+    }
+
+    .wood-link:active {
+      transform: translateY(8px);
+      box-shadow: 0 2px 0 #3f2e1d, 0 6px 12px rgba(0,0,0,0.4);
+    }
+
+    /* ---- Copy icon & notification ---- */
+    .copy-btn {
+      background: none;
+      border: none;
+      color: #4d3421;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0.2rem 0.5rem;
+      border-radius: 30px;
+      transition: 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: inherit;
+      opacity: 0.7;
+    }
+
+    .copy-btn:hover {
+      opacity: 1;
+      background: rgba(90, 60, 30, 0.1);
+      transform: scale(1.05);
+    }
+
+    .copy-btn i {
+      font-size: 1.2rem;
+      width: auto;
+      filter: none;
+    }
+
+    .copy-btn .copy-feedback {
+      font-size: 0.7rem;
+      font-weight: 400;
+      background: #3d2c1b;
+      color: #f1e3cd;
+      padding: 0.1rem 0.5rem;
+      border-radius: 30px;
+      opacity: 0;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .copy-btn .copy-feedback.show {
+      opacity: 1;
+    }
+
+    /* ---- Donation link with barcode ---- */
+    .donation-barcode-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      margin-top: 0.3rem;
+    }
+
+    .donation-barcode-wrapper .barcode-img {
+      max-width: 140px;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      background: #fcf5e8;
+      padding: 6px;
+      box-shadow: 0 4px 0 #5f4732, inset 0 0 0 2px #b39578;
+      transition: 0.15s;
+      display: block;
+    }
+
+    .donation-barcode-wrapper .barcode-label {
+      font-size: 0.75rem;
+      color: #3f2c1a;
+      background: rgba(180, 140, 100, 0.25);
+      padding: 0.15rem 0.8rem;
+      border-radius: 40px;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(2px);
+      border: 1px solid #ac8b6e;
+      font-weight: 500;
+    }
+
+    .wood-link.donation-link {
+      flex-direction: column;
+      gap: 0.3rem;
+      padding: 1rem 1rem 0.8rem;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #f0e0cb, #d4be9f);
+    }
+
+    .wood-link.donation-link .donation-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      width: 100%;
+    }
+
+    .wood-link.donation-link .donation-row i {
+      font-size: 1.7rem;
+      width: 2rem;
+    }
+
+    .wood-link.donation-link .donation-row span {
+      flex: 1;
+      text-align: center;
+    }
+
+    /* ---- social footer ---- */
+    .social-roots {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.6rem 2.2rem;
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
+      border-top: 2px dashed #ac8b6e;
+      position: relative;
+    }
+
+    .social-roots::before {
+      position: absolute;
+      top: -1.1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #dac9ae;
+      padding: 0 0.8rem;
+      font-size: 1.2rem;
+      letter-spacing: 4px;
+      color: #2f4d2a;
+    }
+
+    .social-link {
+      color: #322011;
+      font-size: 1.7rem;
+      transition: 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 50%;
+      background: #dac3a4;
+      background: radial-gradient(circle at 30% 30%, #f3e1cb, #c8ae8b);
+      box-shadow: 0 5px 0 #4d3824, inset 0 1px 6px #ffefdb;
+      text-decoration: none;
+      border: 1px solid #8f755b;
+    }
+
+    .social-link i {
+      filter: drop-shadow(0 2px 2px #b28d6b);
+    }
+
+    .social-link:hover {
+      transform: translateY(-4px) scale(1.03);
+      background: #e9d4bb;
+      box-shadow: 0 7px 0 #4d3824, 0 8px 16px rgba(0,0,0,0.2);
+      color: #1c0f04;
+    }
+
+    .social-link:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #3d2b1a;
+    }
+
+    .moss-note {
+      margin-top: 1.6rem;
+      font-size: 0.8rem;
+      text-align: center;
+      color: #4b3824;
+      opacity: 0.8;
+      font-family: 'Georgia', serif;
+      letter-spacing: 0.5px;
+      border-top: 1px solid #b79b7e;
+      padding-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .moss-note i {
+      margin: 0 0.2rem;
+      color: #3f5e2a;
+    }
+
+    /* ---- responsive ---- */
+    @media (max-width: 480px) {
+      .cozy-card {
+        padding: 1.8rem 1.2rem 2.2rem;
+        border-radius: 32px;
+      }
+      .pfp-frame {
+        width: 90px;
+        height: 90px;
+      }
+      .pfp-frame .fallback-icon {
+        font-size: 3rem;
+      }
+      .cozy-name {
+        font-size: 1.7rem;
+      }
+      .wood-link {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        gap: 0.5rem;
+      }
+      .wood-link i {
+        font-size: 1.4rem;
+        width: 1.8rem;
+      }
+      .social-link {
+        width: 2.4rem;
+        height: 2.4rem;
+        font-size: 1.3rem;
+      }
+      .donation-barcode-wrapper .barcode-img {
+        max-width: 110px;
+      }
+      .wood-link.donation-link {
+        padding: 0.8rem 0.8rem 0.6rem;
+      }
+      .copy-btn {
+        font-size: 1rem;
+      }
+      .copy-btn i {
+        font-size: 1rem;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      background: #3d2c1b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #b18d6b;
+      border-radius: 20px;
+      border: 2px solid #281b0e;
+    }
